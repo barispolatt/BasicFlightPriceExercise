@@ -12,7 +12,7 @@ public class FlightPriceCalculator {
         System.out.print("Enter your age: ");
         age = input.nextInt();
 
-        System.out.print("Enter flight type:\n1. One-way Ticket\n2. Two-way Ticket: ");
+        System.out.print("Enter flight type:\n1. One-way Ticket\n2. Two-way Ticket\n");
         type = input.nextInt();
 
 
@@ -28,7 +28,7 @@ public class FlightPriceCalculator {
         // age discount
         if (age < 12) {
             lastPrice = normalPrice - (normalPrice * childDiscount);
-        } else if (age < 24) {
+        } else if (12<age && age < 24) {
             lastPrice = normalPrice - (normalPrice * youngDiscount);
         } else if (age >= 65) {
             lastPrice = normalPrice - (normalPrice * oldDiscount);
@@ -38,8 +38,7 @@ public class FlightPriceCalculator {
 
         // Ticket type discount (just for two way)
         if (type == 2) {
-            lastPrice -= normalPrice * typeDiscount;
-            lastPrice *= 2; // 2 times price because it is two way ticket
+            lastPrice = 2 * (lastPrice - (lastPrice * typeDiscount)); // 2 times price because it is two way ticket
         }
 
         // print last price
